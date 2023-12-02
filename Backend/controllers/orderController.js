@@ -8,12 +8,12 @@ import Order from '../models/orderModel.js'
 const addOrderItems = asyncHandler(async (req, res)=>{
     const { 
         orderItems,
-        shippingAdress,
-        pamentMethod,
-        itemPrice,
-        taxPrice,
-        shippingPrice,
-        totoalPrice,
+        shippingAddress,  // Corrected variable name
+        paymentMethod,   // Corrected variable name
+        itemsPrice,      // Corrected variable name
+        taxPrice,        // Corrected variable name
+        shippingPrice,   // Corrected variable name
+        totalPrice,      // Corrected variable name
     } = req.body;
 
     if ( orderItems && orderItems.length === 0) {
@@ -26,12 +26,13 @@ const addOrderItems = asyncHandler(async (req, res)=>{
             product: x._id,
             _id: undefined
         })),
-        shippingAdress,
-        pamentMethod,
-        itemPrice,
-        taxPrice,
-        shippingPrice,
-        totoalPrice,
+        user: req.user._id,
+        shippingAddress,  // Corrected variable name
+        paymentMethod,    // Corrected variable name
+        itemsPrice,       // Corrected variable name
+        taxPrice,         // Corrected variable name
+        shippingPrice,    // Corrected variable name
+        totalPrice,       // Corrected variable name
         })
 
         const createOrder = await order.save();
